@@ -22,7 +22,7 @@ public class product {
 		this.dt1_p.setAttribute3(id);
 	}
 	public String getNameProduct() {
-		return dt1_p.getAttribute1();
+		return this.dt1_p.getAttribute1();
 	}
 	public void setNameProduct(String name_) {
 		this.dt1_p.setAttribute1(name_);
@@ -52,10 +52,10 @@ public class product {
 	public product getProduct (String informationProduct) {
 		String [ ] ip=informationProduct.split(";");
 		this.setId(Integer.parseInt(ip[0]));
-		this.setDescription(ip[2]);
-		this.setNameProduct(ip[1]);
-		this.setStock(Integer.parseInt(ip[3]));
-		this.setPrice(Double.parseDouble(ip[4]));
+		this.setDescription(ip[3]);
+		this.setNameProduct(ip[2]);
+		this.setStock(Integer.parseInt(ip[4]));
+		this.setPrice(Double.parseDouble(ip[5]));
 		return this;
 	}
 	

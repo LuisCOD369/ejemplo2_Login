@@ -12,6 +12,8 @@ import javax.swing.JOptionPane;
 import model.User;
 import model.UserDAO;
 import view.Login;
+import view.view_catalogo;
+import view.view_product;
 
 public class logic_view_login implements ActionListener, Parametz
 {
@@ -41,6 +43,9 @@ public class logic_view_login implements ActionListener, Parametz
 				if (u.getEmail().equals(user.getEmail()) && u.getPsw().equals(user.getPsw()))
 				{
 					flag = true;
+					user.setId(u.getId());
+					user.setRoll(u.getRoll());
+					
 				}
 			}
 			// Accion correspondiente
@@ -59,22 +64,29 @@ public class logic_view_login implements ActionListener, Parametz
 			JOptionPane.showMessageDialog(vl, "Bienenido: " + user.getEmail());
 			registerLog("Acceso correcto");
 			try {
-				session.writeFile(user.getEmail()+";"+user.getRoll(), false);
+				session.writeFile(user.getEmail()+";"+user.getRoll()+";", true);
+				switch(user.getRoll()) {
+				case 1:
+					view_product vp=new view_product();
+					vp.setVisible(true);
+					break;
+				case 2:
+					view_catalogo vc=new view_catalogo();
+					vc.setVisible(true);
+					break;
+				}
+				vl.setVisible(false);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+
+			
 		}
 		else
 		{
 			JOptionPane.showMessageDialog(vl, "Credenciales Incorrectas");
 			registerLog("Acceso incorrecto");
 		}
-//		try {
-//			log.writeFile(msg + " > " + user.getEmail() + " Date: " + new Date(), false);
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
 	}
 }

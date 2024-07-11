@@ -28,7 +28,7 @@ public class test
 //			e.printStackTrace();
 //		}
 		
-		productDAO pdao=new productDAO(new product(1, "Monitor 16", 4, 125.50));
+		productDAO pdao=new productDAO(new product(1,"Monito", "Monitor 16", 4, 125.50));
 		if(pdao.creadProduct(1)) {
 			System.out.println("Producto Registrado :)");
 		}
